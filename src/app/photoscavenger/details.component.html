@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <html>
-<pre> 
-Hi tourists, we do have challenges for you! Capture the famous places here in bantayan! 
-Anyways, What is <b>Photo Scavenger Hunt?</b> it is game or activity where participants are tasked with finding and photographing specific items or scenes within a set timeframe or area. 
-Typically organized in teams or individually, participants are given a list of items, themes, or tasks to capture through photographs.
-The goal is to creatively interpret the given prompts and capture visually appealing images while exploring different locations. 
-These challenges offer a diverse range of opportunities to capture the beauty and charm of Bantayan Island's landmarks and culinary delights through photography. Enjoy exploring and documenting your adventures on the island!
-</pre>
-        
-<pre><b>The following pictures, the tourist should identify what is the famous places here in bantayan! and upload a picture with the famous spot.</b></pre>
-
+<head>
+  <title>Photo Scavenger Hunt</title>
   <style>
     .container {
       display: flex;
@@ -55,35 +47,76 @@ These challenges offer a diverse range of opportunities to capture the beauty an
       left: auto;
     }
   </style>
+</head>
+<body>
+  <h1><b>WELCOME TO PHOTO SCAVENGER HUNT!</b></h1>
+  <pre> 
+    Hi tourists, we do have challenges for you! Capture the famous places here in bantayan! 
+    Anyways, What is <b>Photo Scavenger Hunt?</b> It is game or activity where participants are tasked with finding and photographing specific items or scenes within a set timeframe or area. 
+    Typically organized in teams or individually, participants are given a list of items, themes, or tasks to capture through photographs.
+    The goal is to creatively interpret the given prompts and capture visually appealing images while exploring different locations. 
+    These challenges offer a diverse range of opportunities to capture the beauty and charm of Bantayan Island's landmarks and culinary delights through photography. Enjoy exploring and documenting your adventures on the island!
+  </pre>
+        
+  <pre><b>The following pictures, the tourist should identify what is the famous places here in bantayan! and upload a picture with the famous spot.</b></pre>
 
-  <body>
-    <div class="container">
-      <div class="image-container">
-        <div class="image"> 
-          <img src="https://sugbo.ph/wp-content/uploads/2023/04/Baigad-Lagoon-Beach-1-1024x1365.jpg" alt="BALIDBID LAGOON."/> 
-          <div class="button-container">
-            <button onclick="location.href='upload_page.html'">Upload Your Picture</button>
-          </div>
-        </div>
+  <div class="container">
+    <div class="image-container">
+      <div class="image"> 
+        <img src="https://sugbo.ph/wp-content/uploads/2023/04/Baigad-Lagoon-Beach-1-1024x1365.jpg" alt="BALIDBID LAGOON."/> 
       </div>
+  </div>
 
-      <div class="image-container">
-        <div class="image"> 
-          <img src="https://images.ecency.com/p/FUkUE5bzkAZT3HzV5tJDiU2ik81PCd4JCyhWnRcDN8XJsVFY3UNB8DCXBQ6GPNFeoo9w7HvozhkCZChEGvERZnoatubaeC1jmJyqCBozkPBXdUoiEATTKs7CYqomZA5YqH5ZN7TA8bwK3m2bEuDxRCrMhxqnn6EKeU4e.png?format=match&mode=fit" alt="The Ruins."/> 
-          <div class="button-container">
-            <button onclick="location.href='upload_page.html'">Upload Your Picture</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="image-container">
-        <div class="image"> 
-          <img src="https://eazytraveler.net/wp-content/uploads/2022/01/kinatarcan-island-resorts-scaled.jpg" alt="My third image."/> 
-          <div class="button-container">
-            <button onclick="location.href='upload_page.html'">Upload Your Picture</button>
-          </div>
+    <div class="image-container">
+      <div class="image"> 
+        <img src="https://images.ecency.com/p/FUkUE5bzkAZT3HzV5tJDiU2ik81PCd4JCyhWnRcDN8XJsVFY3UNB8DCXBQ6GPNFeoo9w7HvozhkCZChEGvERZnoatubaeC1jmJyqCBozkPBXdUoiEATTKs7CYqomZA5YqH5ZN7TA8bwK3m2bEuDxRCrMhxqnn6EKeU4e.png?format=match&mode=fit" alt="The Ruins."/> 
+        <div class="button-container">
+          <input type="file" (change)="onFileSelected($event)" class="form-control-file" />
         </div>
       </div>
     </div>
-  </body>
+
+    <div class="image-container">
+      <div class="image"> 
+        <img src="https://eazytraveler.net/wp-content/uploads/2022/01/kinatarcan-island-resorts-scaled.jpg" alt="Kinatarcan Island."/> 
+        <div class="button-container">
+          <input type="file" (change)="onFileSelected($event)" class="form-control-file" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Insert Image</label>
+      <input type="file" (change)="onFileSelected($event)" class="form-control-file" />
+    </div>
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+          <div *ngIf="f.name.errors.required">Last Name is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Submit
+      </button>
+    </div>
+  </form>
+
+  <tbody>
+    <tr *ngFor="let scavenger of scavengers">
+      <td style="text-align: center; font-weight: bold;">{{ scavenger.name }}</td>
+      <td>
+        <img [src]="'http://localhost:4000/' + scavenger.image" alt="{{ scavenger.name }}" width="50px" height="10px" />
+      </td>
+    </tr>
+    <tr *ngIf="!scavengers.length">
+        <td colspan="7" class="text-center">
+            <span>No scavengers available</span>
+        </td>
+    </tr>
+  </tbody>
+</body>
 </html>

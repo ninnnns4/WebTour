@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-import { DiyCraftModule  } from './diycraft-routing.module';
+import { FeedbackRoutingModule  } from './diycraft-routing.module';
 import { LayoutComponent } from './layout.component';
 import { DetailsComponent } from './details.component';
 
@@ -10,7 +10,7 @@ import { DetailsComponent } from './details.component';
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        DiyCraftModule ,
+        FeedbackRoutingModule ,
         FormsModule
     ],
     declarations: [
