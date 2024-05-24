@@ -33,6 +33,7 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      margin-bottom: 10px;
     }
 
     button:hover {
@@ -131,14 +132,13 @@
     </div>
     <div class="form-group">
       <label>Select Location</label>
-      <select formControlName="location" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.location.errors }">
-        <option value="">Select a location</option>
+      <select formControlName="lugar" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lugar.errors }">
         <option value="Baigad Lagoon">Baigad Lagoon</option>
         <option value="The Ruins">The Ruins</option>
         <option value="Kinatarcan">Kinatarcan</option>
       </select>
-      <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
-        <div *ngIf="f.location.errors.required">Location is required</div>
+      <div *ngIf="submitted && f.lugar.errors" class="invalid-feedback">
+        <div *ngIf="f.lugar.errors.required">Lugar is required</div>
       </div>
     </div>
     <div class="form-group">
@@ -155,20 +155,26 @@
       </button>
     </div>
   </form>
-  
 
-  <tbody>
-    <tr *ngFor="let scavenger of scavengers">
-      <td style="text-align: center; font-weight: bold;">{{ scavenger.name }}</td>
-      <td>
-        <img [src]="'http://localhost:4000/' + scavenger.image" alt="{{ scavenger.name }}" width="50px" height="10px" />
-      </td>
-    </tr>
-    <tr *ngIf="!scavengers.length">
-        <td colspan="7" class="text-center">
-            <span>No scavengers available</span>
-        </td>
-    </tr>
-  </tbody>
+  <button (click)="showTable = !showTable">{{ showTable ? 'Hide' : 'Show' }} Table</button>
+ 
+  <table *ngIf="showTable" class="table table-striped">
+      <thead>
+          <tr>
+              <th style="padding-left:100px; width:30%">Image</th>
+              <th style="text-align:center; width:30%">Hunter's Name</th>
+              <th style="text-align:center; width:30%">Location</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let scavenger of scavengers">
+              <td>
+                <img [src]="'http://localhost:4000/' + scavenger.image" alt="{{ scavenger.name }}" style="width:200px;height:200px;"/>
+              </td>
+              <td style="text-align: center; font-weight: bold;">{{ scavenger.name }}</td>
+              <td style="text-align: center; font-weight: bold;">{{ scavenger.lugar }}</td>
+          </tr>
+      </tbody>
+  </table>
 </body>
 </html>

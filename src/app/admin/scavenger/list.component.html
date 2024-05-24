@@ -1,0 +1,32 @@
+<h1>Accounts</h1>
+<p>All accounts from secure (admin only) api end point:</p>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Create Account</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="padding-left:100px; width:30%">Image</th>
+            <th style="text-align:center; width:30%">Hunter's Name</th>
+            <th style="text-align:center; width:30%">Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let scavenger of scavengers">
+            <td>
+                <img [src]="'http://localhost:4000/' + scavenger.image" alt="{{ scavenger.name }}" style="width:200px;height:200px;"/>
+            </td>
+            <td style="text-align: center; font-weight: bold;">{{ scavenger.name }}</td>
+            <td style="text-align: center; font-weight: bold;">{{ scavenger.lugar }}</td>
+            <td style="white-space: nowrap">
+                <button (click)="deleteScavenger(scavenger.id)" class="btn btn-sm btn-danger btn-delete-account" [disabled]="scavenger.isDeleting">
+                    <span *ngIf="scavenger.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!scavenger.isDeleting">Delete</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!scavengers">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

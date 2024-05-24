@@ -18,6 +18,7 @@ export class DetailsComponent implements OnInit {
   selectedFile: File | null = null;
   scavengers: Scavenger[] = []; // Array to hold all events
   imageName: string = '';
+  showTable: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,6 +31,7 @@ export class DetailsComponent implements OnInit {
   ngOnInit() {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
+      lugar: ['', Validators.required],
       image: ['']
     });
 
@@ -42,14 +44,6 @@ export class DetailsComponent implements OnInit {
 
     // Load all events when component initializes
     this.loadAllScavengers();
-  }
-
-  triggerFileInput(event: MouseEvent) {
-    const imgElement = event.target as HTMLElement;
-    const fileInput = imgElement.nextElementSibling as HTMLInputElement;
-    if (fileInput) {
-      fileInput.click();
-    }
   }
 
   onFileSelected(event: any) {
@@ -75,6 +69,7 @@ export class DetailsComponent implements OnInit {
     this.loading = true;
     const formData = new FormData();
     formData.append('name', this.form.get('name')?.value);
+    formData.append('lugar', this.form.get('lugar')?.value);
     if (this.selectedFile) {
       formData.append('image', this.selectedFile, this.selectedFile.name);
     }
