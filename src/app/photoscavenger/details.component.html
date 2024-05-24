@@ -16,6 +16,10 @@
       height: 200px; /* Adjust the height */
     }
 
+  .title2 {
+    font-family:'Times New Roman', Times, serif
+  }
+
     .button-container {
       text-align: center;
       margin-top: 20px;
@@ -35,53 +39,91 @@
       background-color: #45a049;
     }
 
-    .image-container {
+    .pic1:hover {
       display: flex;
       flex-direction: column; /* Display images and buttons in a column */
       align-items: center;
       margin-bottom: 20px; /* Add margin between each image-button pair */
+      -ms-transform: scale(1.5); /* IE 9 */
+      -webkit-transform: scale(1.5); /* Safari 3-8 */
+      transform: scale(1.2); 
     }
 
-    .image {
-      margin-bottom: 10px; /* Add margin between images */
-      left: auto;
+    .pic2:hover {
+      display: flex;
+      flex-direction: column; /* Display images and buttons in a column */
+      align-items: center;
+      margin-bottom: 20px; /* Add margin between each image-button pair */
+      -ms-transform: scale(1.5); /* IE 9 */
+      -webkit-transform: scale(1.5); /* Safari 3-8 */
+      transform: scale(1.2); 
     }
+
+    .pic3:hover {
+      display: flex;
+      flex-direction: column; /* Display images and buttons in a column */
+      align-items: center;
+      margin-bottom: 20px; /* Add margin between each image-button pair */
+      -ms-transform: scale(1.5); /* IE 9 */
+      -webkit-transform: scale(1.5); /* Safari 3-8 */
+      transform: scale(1.2); 
+    }
+
+    .pic1{
+      margin-right: 40px;
+    }
+
+    .pic2{
+      margin-right: 40px;
+    }
+    
+    .pic3{
+      margin-right: 40px;
+    }
+
+    .title2 {
+    text-align: center;
+    text-decoration: underline;
+  }
   </style>
 </head>
 <body>
-  <h1><b>WELCOME TO PHOTO SCAVENGER HUNT!</b></h1>
-  <pre> 
-    Hi tourists, we do have challenges for you! Capture the famous places here in bantayan! 
-    Anyways, What is <b>Photo Scavenger Hunt?</b> It is game or activity where participants are tasked with finding and photographing specific items or scenes within a set timeframe or area. 
-    Typically organized in teams or individually, participants are given a list of items, themes, or tasks to capture through photographs.
-    The goal is to creatively interpret the given prompts and capture visually appealing images while exploring different locations. 
-    These challenges offer a diverse range of opportunities to capture the beauty and charm of Bantayan Island's landmarks and culinary delights through photography. Enjoy exploring and documenting your adventures on the island!
-  </pre>
+<div>
+  <h1 class="title2"><b>WELCOME TO PHOTO SCAVENGER HUNT!</b></h1>
+    <p> 
+      Hi tourists, we do have challenges for you! Capture the famous places here in bantayan! 
+      Anyways, What is <b>Photo Scavenger Hunt?</b> It is game or activity where participants are tasked with finding and photographing specific items or scenes within a set timeframe or area. 
+      Typically organized in teams or individually, participants are given a list of items, themes, or tasks to capture through photographs.
+      The goal is to creatively interpret the given prompts and capture visually appealing images while exploring different locations. 
+      These challenges offer a diverse range of opportunities to capture the beauty and charm of Bantayan Island's landmarks and culinary delights through photography. Enjoy exploring and documenting your adventures on the island!
+    </p>
+</div>
         
   <pre><b>The following pictures, the tourist should identify what is the famous places here in bantayan! and upload a picture with the famous spot.</b></pre>
   
   <div class="container">
-    <div class="image-container">
+    <div class="image.container">
       <h1>Baigad Lagoon</h1>
-      <div class="image"> 
+      <div class="pic1"> 
         <img src="https://sugbo.ph/wp-content/uploads/2023/04/Baigad-Lagoon-Beach-1-1024x1365.jpg" alt="BALIDBID LAGOON."/> 
       </div>
   </div>
 
     <div class="image-container">
       <h1>The Ruins</h1>
-      <div class="image"> 
+      <div class="pic2"> 
         <img src="https://images.ecency.com/p/FUkUE5bzkAZT3HzV5tJDiU2ik81PCd4JCyhWnRcDN8XJsVFY3UNB8DCXBQ6GPNFeoo9w7HvozhkCZChEGvERZnoatubaeC1jmJyqCBozkPBXdUoiEATTKs7CYqomZA5YqH5ZN7TA8bwK3m2bEuDxRCrMhxqnn6EKeU4e.png?format=match&mode=fit" alt="The Ruins."/> 
       </div>
     </div>
 
     <div class="image-container">
       <h1>Kinatarcan</h1>
-      <div class="image"> 
+      <div class="pic3"> 
         <img src="https://eazytraveler.net/wp-content/uploads/2022/01/kinatarcan-island-resorts-scaled.jpg" alt="Kinatarcan Island."/> 
       </div>
     </div>
   </div>
+  <br>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label>Insert Image</label>
