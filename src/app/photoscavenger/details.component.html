@@ -59,29 +59,26 @@
   </pre>
         
   <pre><b>The following pictures, the tourist should identify what is the famous places here in bantayan! and upload a picture with the famous spot.</b></pre>
-
+  
   <div class="container">
     <div class="image-container">
+      <h1>Baigad Lagoon</h1>
       <div class="image"> 
         <img src="https://sugbo.ph/wp-content/uploads/2023/04/Baigad-Lagoon-Beach-1-1024x1365.jpg" alt="BALIDBID LAGOON."/> 
       </div>
   </div>
 
     <div class="image-container">
+      <h1>The Ruins</h1>
       <div class="image"> 
         <img src="https://images.ecency.com/p/FUkUE5bzkAZT3HzV5tJDiU2ik81PCd4JCyhWnRcDN8XJsVFY3UNB8DCXBQ6GPNFeoo9w7HvozhkCZChEGvERZnoatubaeC1jmJyqCBozkPBXdUoiEATTKs7CYqomZA5YqH5ZN7TA8bwK3m2bEuDxRCrMhxqnn6EKeU4e.png?format=match&mode=fit" alt="The Ruins."/> 
-        <div class="button-container">
-          <input type="file" (change)="onFileSelected($event)" class="form-control-file" />
-        </div>
       </div>
     </div>
 
     <div class="image-container">
+      <h1>Kinatarcan</h1>
       <div class="image"> 
         <img src="https://eazytraveler.net/wp-content/uploads/2022/01/kinatarcan-island-resorts-scaled.jpg" alt="Kinatarcan Island."/> 
-        <div class="button-container">
-          <input type="file" (change)="onFileSelected($event)" class="form-control-file" />
-        </div>
       </div>
     </div>
   </div>
@@ -91,19 +88,32 @@
       <input type="file" (change)="onFileSelected($event)" class="form-control-file" />
     </div>
     <div class="form-group">
+      <label>Select Location</label>
+      <select formControlName="location" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.location.errors }">
+        <option value="">Select a location</option>
+        <option value="Baigad Lagoon">Baigad Lagoon</option>
+        <option value="The Ruins">The Ruins</option>
+        <option value="Kinatarcan">Kinatarcan</option>
+      </select>
+      <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+        <div *ngIf="f.location.errors.required">Location is required</div>
+      </div>
+    </div>
+    <div class="form-group">
       <label>Name</label>
       <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
       <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-          <div *ngIf="f.name.errors.required">Last Name is required</div>
+        <div *ngIf="f.name.errors.required">Name is required</div>
       </div>
     </div>
     <div class="form-group">
       <button [disabled]="loading" class="btn btn-primary">
-          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-          Submit
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Submit
       </button>
     </div>
   </form>
+  
 
   <tbody>
     <tr *ngFor="let scavenger of scavengers">
