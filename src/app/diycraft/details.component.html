@@ -15,51 +15,56 @@
         * {
             font-family: sans-serif;
         }
-
-        body {
-            text-align: center;
+        form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
         }
 
-        .myBtn {
-            padding: 5px 18px;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 10px;
-            color: white;
-            background-color: blue;
+        form label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
         }
 
-        .myBtn:hover {
-            background-color: #45a049; /* Darker Green */
+        form .form-control {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
         }
 
-        legend {
-            font-weight: bold;
-            color: crimson;
+        form .form-control.is-invalid {
+        border-color: #e3342f;
+        background-color: #f8d7da;
         }
 
-        input[type="text"], input[type="email"] {
-            width: 30%;
-            height: 100%;
-            border-radius: 5px;
-            padding-left: 5px;
+        form .invalid-feedback {
+        color: #e3342f;
+        font-size: 0.875em;
+        margin-top: -10px;
+        margin-bottom: 10px;
         }
 
-        textarea {
-            border-radius: 5px;
-            width: 80%;
-            height: 90px;
+        form .btn {
+        padding: 10px 20px; 
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
         }
 
-        label {
-            float: left;
-            position: relative;
-            left: 9.5%;
+        form .btn:hover {
+        background-color: #0056b3;
         }
-
-        .bg {
-            background-image: linear-gradient(to bottom left, blue, white);
+        h2 {
+        text-align: center;
+        margin-bottom: 20px; /* Optional: Adds some space below the heading */
         }
     </style>
 
@@ -82,7 +87,7 @@
                 <div *ngIf="f.message.errors.required">Message is required</div>
             </div>
 
-            <h5>Rate Your Experience</h5>
+            <h5>Rate Your Experience:</h5>
             <div class="rating">
                 <input type="radio" id="star5" formControlName="rating" value="5"/>
                 <label for="star5" title="5 stars">&#9733;</label>
