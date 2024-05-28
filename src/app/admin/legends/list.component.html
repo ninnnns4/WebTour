@@ -1,0 +1,72 @@
+<h1>Local Legend Calendar</h1>
+<p>All legends:</p>
+<button class="btn btn-primary" (click)="showAddForm()">Add New Legend</button>
+
+<!-- Add Form -->
+<div *ngIf="showAdd">
+    <h3>Add New Legend</h3>
+    <form (ngSubmit)="addLegend()">
+        <div class="form-group">
+            <label for="picture">Picture URL:</label>
+            <input type="text" class="form-control" id="picture" [(ngModel)]="newLegend.picture" name="picture" required>
+        </div>
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" id="title" [(ngModel)]="newLegend.title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" [(ngModel)]="newLegend.description" name="description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" class="form-control" id="date" [(ngModel)]="newLegend.date" name="date" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelAdd()">Cancel</button>
+    </form>
+    <br>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width:20%">Picture</th>
+            <th style="width:20%">Title</th>
+            <th style="width:30%">Description</th>
+            <th style="width:20%">Date</th>
+            <th style="width:10%">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let legend of legends">
+            <tr *ngIf="!legend.editing; else editRow">
+                <td><img [src]="'assets/legendsPic/' + legend.picture" alt="{{ legend.title }}" style="max-width: 100%; max-height: 100%;"></td>
+                <td>{{ legend.title }}</td>
+                <td>{{ legend.description }}</td>
+                <td>{{ legend.date | date: 'shortDate' }}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="editLegend(legend)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteLegend(legend)">Delete</button>
+                </td>
+            </tr>
+            <ng-template #editRow>
+                <tr>
+                    <td><img [src]="'assets/legendsPic/' + legend.picture" alt="{{ legend.title }}" style="max-width: 100%; max-height: 100%;"></td>
+                    <td><input type="text" [(ngModel)]="legend.editTitle"></td>
+                    <td><textarea [(ngModel)]="legend.editDescription"></textarea></td>
+                    <td><input type="date" [(ngModel)]="legend.editDate"></td>
+                    <td>
+                        <button class="btn btn-primary" (click)="saveLegend(legend)">Save</button>
+                        <button class="btn btn-secondary" (click)="cancelEdit(legend)">Cancel</button>
+                    </td>
+                </tr>
+            </ng-template>                       
+        </ng-container>
+        <tr *ngIf="!legends || legends.length === 0">
+            <td class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

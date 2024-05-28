@@ -4,3 +4,4 @@ export * from './food.service';
 export * from './tradition.service';
 export * from './scavenger.service';
 export * from './feedback.service';
+export * from './legend.service';

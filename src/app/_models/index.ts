@@ -5,3 +5,4 @@ export * from './food';
 export * from './tradition';
 export * from './scavenger';
 export * from './feedback';
+export * from './legend';

@@ -1,103 +1,17 @@
 <h1 class="title">Bantayan Island: Beauty, History, Culture.</h1>
 <div class="row">
-  <div class="column">
+  <div class="column" *ngFor="let legend of legends">
     <div class="container">
       <div class="sub-container">
-        <img src="https://go2ph.club/wp-content/uploads/sites/2/2022/08/map-1.jpg" alt="Avatar" class="image">
+        <img [src]="'assets/legendsPic/' + legend.picture" alt="Avatar" class="image">
         <div class="overlay">
-          <div class="text">Bantayan Island in Cebu got its name from the term Bantayan sa Hari, which means "Watchtowers of the King." Eighteen watchtowers were built here during the time of the 22nd Governor-General Sebastian Hurtado de Corcuera when Moro pirates raided the island looking for slaves.</div>
+          <div class="text">{{ legend.description }}</div>
         </div>
       </div>
     </div>
     <br>
     <div class="a">
-      <h2>"Bantayan" Island</h2>
-    </div>
-  </div>  
-  <div class="column">
-    <div class="container">
-      <div class="sub-container-2">
-        <img src="https://www.nopostcode.com/wp-content/uploads/2022/04/The-Ruins-Bantayan-5.jpg" alt="Avatar" class="image">
-        <div class="overlay2">
-          <div class="text">An unfinished fort from the Spanish period, while the majority of the locals there claimed it was a German house that was destroyed by a typhoon in 2013.</div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="b">
-      <h2>"The Ruins"</h2>
-    </div>
-  </div> 
-  <div class="column">
-    <div class="container">
-      <div class="sub-container-3">
-        <img src="https://gttp.imgix.net/225309/x/0/top-24-tourist-spots-in-bantayan-island-cebu-uncrowded-white-sand-beaches-10.jpg?auto=compress%2Cformat&ch=Width%2CDPR&dpr=1&ixlib=php-3.3.0&w=883" alt="Avatar" class="image">
-        <div class="overlay3">
-          <div class="text">Bantayan Island: A Hidden Gem in the Philippines
-
-            It is known for its crystal-clear waters, fine white sand beaches, and laid-back atmosphere, making it a perfect destination for travelers looking to escape the hustle and bustle of city life.</div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="c">
-      <h2>"White Sand Beaches"</h2>
-    </div>
-  </div> 
-  <div class="column">
-    <div class="container">
-      <div class="sub-container-4">
-        <img src="https://www.mycebu.ph/wp-content/uploads/2020/03/bantayan-church-facade-scaled.jpg" alt="Avatar" class="image">
-        <div class="overlay4">
-          <div class="text">St. Peter & Paul church was built under Spanish rule and was used as a first stop for priests entering the country.</div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="d">
-      <h2>"St. Peter & Paul Church"</h2>
-    </div>
-  </div> 
-  <div class="column">
-    <div class="container">
-      <div class="sub-container-5">
-        <img src="https://live.staticflickr.com/4088/4947457724_57430e9f32_b.jpg" alt="Avatar" class="image">
-        <div class="overlay5">
-          <div class="text">Datu Daya was a legendary lord of Kandaya ("Daya's (kingdom)"), the place that is now known as Daanbantayan, Cebu, in the Philippines.</div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="e">
-      <h2>"Datu Daya"</h2>
+      <h2>{{ legend.title }}</h2>
     </div>
   </div>
-  <div class="column">
-    <div class="container">
-      <div class="sub-container-6">
-        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/306637739.jpg?k=5ab217d2c2b0af547879d3217f1749bb27366efc0b271e43e8d3cdd9e8283e54&o=&hp=1" alt="Avatar" class="image">
-        <div class="overlay6">
-          <div class="text">The island is known for its local craftsmanship, particularly in weaving. The locals create beautiful and intricate banig (woven mats) made from pandan leaves, which are both functional and decorative.</div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="f">
-      <h2>"Traditional Crafts"</h2>
-    </div>
-  </div>  
-  <div class="column">
-    <div class="container">
-      <div class="sub-container-2">
-        <img src="https://www.nopostcode.com/wp-content/uploads/2022/04/The-Ruins-Bantayan-5.jpg" alt="Avatar" class="image">
-        <div class="overlay2">
-          <div class="text">An unfinished fort from the Spanish period, while the majority of the locals there claimed it was a German house that was destroyed by a typhoon in 2013.</div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="b">
-      <h2>"The Ruins"</h2>
-    </div>
-  </div> 
 </div>

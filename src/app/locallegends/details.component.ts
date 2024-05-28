@@ -1,10 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LegendService } from '@app/_services';
+import { Legend } from '@app/_models';
 
-import { AccountService } from '@app/_services';
+@Component({
+  templateUrl: 'details.component.html'
+})
+export class DetailsComponent implements OnInit {
+  legends: Legend[] = [];
 
-@Component({ templateUrl: 'details.component.html' })
-export class DetailsComponent {
-    account = this.accountService.accountValue;
+  constructor(private legendService: LegendService) { }
 
-    constructor(private accountService: AccountService) { }
+  ngOnInit() {
+    this.loadLegends();
+  }
+
+  loadLegends() {
+    this.legendService.getAll().subscribe(
+      legends => {
+        this.legends = legends;
+      },
+      error => {
+        console.error('Error fetching legends:', error);
+      }
+    );
+  }
 }
